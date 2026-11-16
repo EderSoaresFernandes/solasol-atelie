@@ -112,8 +112,6 @@ header a img:hover {
      object-fit: contain;
   margin: 0 auto;
 }
-#bannerPrincipal {
-}
 #bannerPrincipal .carousel-control-prev-icon,
 #bannerPrincipal .carousel-control-next-icon {
   filter: invert(1);
@@ -1186,6 +1184,7 @@ body.header-compacto .header-linha {
     margin-bottom: 0.35rem !important;
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
@@ -1483,7 +1482,6 @@ body.header-compacto .header-linha {
     font-size: 0.72rem;
   }
 }
-
 /* =========================================================
    22. FONTE ELEGANTE NOS TÍTULOS (Cormorant Garamond, carregada no index.php)
    Serifada clássica de ateliê/alfaiataria, em contraste com a logo em pincel.
@@ -1494,85 +1492,79 @@ main h1,
 main h2,
 main h3,
 .site-footer .footer-titulo {
-    font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
-    letter-spacing: 0.04em;
+  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  letter-spacing: 0.04em;
 }
 
 main h3.text-success,
 main h1.display-5 {
-    font-family: inherit;
-    letter-spacing: normal;
+  font-family: inherit;
+  letter-spacing: normal;
 }
 
 main h1.fw-light,
 main h2.fw-light,
 main h3.fw-light {
-    font-weight: 500 !important;
+  font-weight: 500 !important;
 }
 
 main h1,
 main h2 {
-    font-size: calc(1.45rem + 1vw);
+  font-size: calc(1.45rem + 1vw);
 }
 
 main h3 {
-    font-size: calc(1.4rem + 0.6vw);
+  font-size: calc(1.4rem + 0.6vw);
 }
 
 @media (min-width: 1200px) {
-    main h1,
-    main h2 {
-        font-size: 2.25rem;
-    }
-
-    main h3 {
-        font-size: 1.95rem;
-    }
+  main h1,
+  main h2 {
+    font-size: 2.25rem;
+  }
+  main h3 {
+    font-size: 1.95rem;
+  }
 }
-
 .nossa-historia .nossa-historia-titulo {
-    font-size: 2.15rem;
+  font-size: 2.15rem;
 }
 
 .pagina-institucional .pagina-institucional-titulo {
-    font-size: 1.9rem;
+  font-size: 1.9rem;
 }
 
 .pagina-institucional h2 {
-    font-size: 1.6rem;
+  font-size: 1.6rem;
 }
 
 .card-video-wrapper .video-overlay-content .video-title {
-    font-size: 2.25rem;
-    font-weight: 500;
+  font-size: 2.25rem;
+  font-weight: 500;
 }
 
 .site-footer .footer-titulo {
-    font-size: 1.45rem;
+  font-size: 1.45rem;
 }
 
 @media (min-width: 768px) {
-    .titulo-produto-detalhe {
-        font-size: calc(1.04rem + 0.7vw);
-    }
+  .titulo-produto-detalhe {
+    font-size: calc(1.04rem + 0.7vw);
+  }
 }
-
 @media (min-width: 1200px) {
-    .titulo-produto-detalhe {
-        font-size: 1.6rem;
-    }
+  .titulo-produto-detalhe {
+    font-size: 1.6rem;
+  }
 }
-
 @media (max-width: 767.98px) {
-    .nossa-historia .nossa-historia-titulo {
-        font-size: 1.75rem;
-    }
-
-    .pagina-institucional .pagina-institucional-titulo {
-        font-size: 1.5rem;
-    }
+  .nossa-historia .nossa-historia-titulo {
+    font-size: 1.75rem;
+  }
+  .pagina-institucional .pagina-institucional-titulo {
+    font-size: 1.5rem;
+  }
 }
-
 /* =========================================================
    23. COMPUTADOR E TABLET SEM ☰ (a partir de 992px): só a faixa de avisos e a linha
    da logo/ícones ficam fixas no topo. O menu (Home, Feminino...) saiu do bloco fixo no
@@ -1580,15 +1572,14 @@ main h3 {
    (escrito em CSS puro: o mesmo bloco está no style.scss e no style.css)
    ======================================================== */
 @media (min-width: 992px) {
-    body.header-compacto .top-bar {
-        max-height: 60px;
-        padding-top: 0.5rem !important;
-        padding-bottom: 0.5rem !important;
-    }
-
-    .header-fixed-wrapper {
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    }
+  body.header-compacto .top-bar {
+    max-height: 60px;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+  .header-fixed-wrapper {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
 }
 /* =========================================================
    24. SACOLA (tablet e computador): títulos Preço, Qtd, Subtotal e Ação centralizados
@@ -1596,78 +1587,69 @@ main h3 {
    (escrito em CSS puro: o mesmo bloco está no style.scss e no style.css)
    ======================================================== */
 @media (min-width: 768px) {
-    .tabela-sacola th:not(:first-child),
-    .tabela-sacola .sc-preco,
-    .tabela-sacola .sc-qtd,
-    .tabela-sacola .sc-subtotal,
-    .tabela-sacola .sc-acao {
-        text-align: center !important;
-        white-space: nowrap;
-    }
-
-    .tabela-sacola .sc-qtd .input-group {
-        margin: 0 auto;
-    }
+  .tabela-sacola th:not(:first-child),
+  .tabela-sacola .sc-preco,
+  .tabela-sacola .sc-qtd,
+  .tabela-sacola .sc-subtotal,
+  .tabela-sacola .sc-acao {
+    text-align: center !important;
+    white-space: nowrap;
+  }
+  .tabela-sacola .sc-qtd .input-group {
+    margin: 0 auto;
+  }
 }
 /* =========================================================
    25. PAINEL ADMIN RESPONSIVO: rodapé + cabeçalho fixo com menu ☰ no celular/tablet
    (escrito em CSS puro: o mesmo bloco está no style.scss e no style.css)
    ======================================================== */
 .admin-footer {
-    line-height: 1.6;
+  line-height: 1.6;
 }
 
 @media (min-width: 992px) {
-    .admin-menu {
-        flex: 0 0 auto;
-    }
+  .admin-menu {
+    flex: 0 0 auto;
+  }
 }
-
 @media (max-width: 991.98px) {
-    .admin-container {
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
-    }
-
-    .admin-sticky-header {
-        flex-wrap: nowrap;
-        gap: 0.5rem;
-        margin: -1rem -1rem 1rem;
-        padding: 0.6rem 0.75rem !important;
-        border-radius: 0.375rem 0.375rem 0 0;
-        z-index: 1046;
-    }
-
-    .admin-header-titulo {
-        margin: 0;
-        font-size: 1.25rem;
-    }
-
-    .admin-logo-img {
-        height: 42px;
-    }
-
-    .admin-menu-btn {
-        flex: 0 0 auto;
-    }
-
-    .admin-menu .admin-header-botoes {
-        flex: 1 1 auto;
-        grid-template-columns: 1fr;
-        gap: 0.5rem;
-        width: 100%;
-    }
-
-    .admin-menu .admin-header-botoes .btn {
-        padding-top: 0.6rem;
-        padding-bottom: 0.6rem;
-        font-size: 0.95rem;
-        text-align: left;
-    }
-
-    .admin-menu .admin-header-botoes form .btn {
-        text-align: center;
-    }
+  .admin-container {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  .admin-sticky-header {
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+    margin: -1rem -1rem 1rem;
+    padding: 0.6rem 0.75rem !important;
+    border-radius: 0.375rem 0.375rem 0 0;
+    z-index: 1046;
+  }
+  .admin-header-titulo {
+    margin: 0;
+    font-size: 1.25rem;
+  }
+  .admin-logo-img {
+    height: 42px;
+  }
+  .admin-menu-btn {
+    flex: 0 0 auto;
+  }
+  .admin-menu .admin-header-botoes {
+    flex: 1 1 auto;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    width: 100%;
+  }
+  .admin-menu .admin-header-botoes .btn {
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+    font-size: 0.95rem;
+    text-align: left;
+  }
+  .admin-menu .admin-header-botoes form .btn {
+    text-align: center;
+  }
 }
 /* =========================================================
    26. PAINEL ADMIN NO CELULAR: tabelas viram cartões (Pedidos, Dúvidas, Cupons, Promoções,
@@ -1676,69 +1658,59 @@ main h3 {
    (escrito em CSS puro: o mesmo bloco está no style.scss e no style.css)
    ======================================================== */
 @media (max-width: 767.98px) {
-    .tabela-cartoes-admin thead {
-        display: none;
-    }
-
-    .tabela-cartoes-admin,
-    .tabela-cartoes-admin tbody,
-    .tabela-cartoes-admin tr,
-    .tabela-cartoes-admin td {
-        display: block;
-        width: 100%;
-    }
-
-    .tabela-cartoes-admin tr {
-        margin-bottom: 0.75rem;
-        border: 1px solid #ebe6df;
-        border-radius: 0.5rem;
-        overflow: hidden;
-        background-color: #ffffff;
-    }
-
-    .tabela-cartoes-admin td {
-        border: 0 !important;
-        border-bottom: 1px solid #f1ece4 !important;
-        padding: 0.55rem 0.75rem !important;
-        text-align: left !important;
-    }
-
-    .tabela-cartoes-admin td:last-child {
-        border-bottom: 0 !important;
-    }
-
-    .tabela-cartoes-admin td[data-label]::before {
-        content: attr(data-label);
-        display: block;
-        margin-bottom: 0.15rem;
-        font-size: 0.7rem;
-        font-weight: 700;
-        letter-spacing: 0.04em;
-        text-transform: uppercase;
-        color: #8a8a8a;
-    }
-
-    .tabela-cartoes-admin td[data-label=""]::before {
-        display: none;
-    }
-
-    .tabela-cartoes-admin form {
-        min-width: 0 !important;
-        max-width: 100% !important;
-    }
-
-    .tabela-cartoes-admin .form-select,
-    .tabela-cartoes-admin textarea {
-        width: 100%;
-    }
-
-    .tabela-cartoes-admin ul {
-        max-height: none !important;
-    }
-
-    .tabela-cartoes-admin td .btn-sm {
-        padding: 0.4rem 0.8rem;
-    }
+  .tabela-cartoes-admin thead {
+    display: none;
+  }
+  .tabela-cartoes-admin,
+  .tabela-cartoes-admin tbody,
+  .tabela-cartoes-admin tr,
+  .tabela-cartoes-admin td {
+    display: block;
+    width: 100%;
+  }
+  .tabela-cartoes-admin tr {
+    margin-bottom: 0.75rem;
+    border: 1px solid #ebe6df;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background-color: #ffffff;
+  }
+  .tabela-cartoes-admin td {
+    border: 0 !important;
+    border-bottom: 1px solid #f1ece4 !important;
+    padding: 0.55rem 0.75rem !important;
+    text-align: left !important;
+  }
+  .tabela-cartoes-admin td:last-child {
+    border-bottom: 0 !important;
+  }
+  .tabela-cartoes-admin td[data-label]::before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: 0.15rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #8a8a8a;
+  }
+  .tabela-cartoes-admin td[data-label=""]::before {
+    display: none;
+  }
+  .tabela-cartoes-admin form {
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+  .tabela-cartoes-admin .form-select,
+  .tabela-cartoes-admin textarea {
+    width: 100%;
+  }
+  .tabela-cartoes-admin ul {
+    max-height: none !important;
+  }
+  .tabela-cartoes-admin td .btn-sm {
+    padding: 0.4rem 0.8rem;
+  }
 }
 /* =========================================================
    27. PAINEL ADMIN NO CELULAR: nos campos curtos o título fica AO LADO do valor
@@ -1747,20 +1719,19 @@ main h3 {
    (escrito em CSS puro: o mesmo bloco está no style.scss e no style.css)
    ======================================================== */
 @media (max-width: 767.98px) {
-    .tabela-cartoes-admin td[data-label]:not(.celula-empilhada) {
-        position: relative;
-        padding-left: 42% !important;
-        min-height: 2.3rem;
-    }
-
-    .tabela-cartoes-admin td[data-label]:not(.celula-empilhada)::before {
-        position: absolute;
-        left: 0.75rem;
-        top: 0.65rem;
-        width: calc(42% - 1.25rem);
-        margin: 0;
-        line-height: 1.3;
-    }
+  .tabela-cartoes-admin td[data-label]:not(.celula-empilhada) {
+    position: relative;
+    padding-left: 42% !important;
+    min-height: 2.3rem;
+  }
+  .tabela-cartoes-admin td[data-label]:not(.celula-empilhada)::before {
+    position: absolute;
+    left: 0.75rem;
+    top: 0.65rem;
+    width: calc(42% - 1.25rem);
+    margin: 0;
+    line-height: 1.3;
+  }
 }
 /* =========================================================
    28. PAINEL ADMIN NO CELULAR/TABLET: títulos das páginas numa linha só
@@ -1768,21 +1739,20 @@ main h3 {
    (escrito em CSS puro: o mesmo bloco está no style.scss e no style.css)
    ======================================================== */
 @media (max-width: 991.98px) {
-    .admin-container .card > h4.fw-bold,
-    .admin-container .card > h5.fw-bold,
-    .admin-container .card > div > h4.fw-bold,
-    .admin-container .card > div > h5.fw-bold:not(.admin-header-titulo) {
-        font-size: clamp(0.8rem, 3.7vw, 1.15rem);
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        min-width: 0;
-        max-width: 100%;
-    }
-
-    .filtro-categorias-admin .btn {
-        flex: 1 1 calc(50% - 0.5rem);
-    }
+  .admin-container .card > h4.fw-bold,
+  .admin-container .card > h5.fw-bold,
+  .admin-container .card > div > h4.fw-bold,
+  .admin-container .card > div > h5.fw-bold:not(.admin-header-titulo) {
+    font-size: clamp(0.8rem, 3.7vw, 1.15rem);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+    max-width: 100%;
+  }
+  .filtro-categorias-admin .btn {
+    flex: 1 1 calc(50% - 0.5rem);
+  }
 }
 /* =========================================================
    29. PAINEL ADMIN: sem o espaço do cabeçalho fixo da LOJA no topo (no celular o body da loja
@@ -1790,191 +1760,189 @@ main h3 {
    (escrito em CSS puro: o mesmo bloco está no style.scss e no style.css)
    ======================================================== */
 body.admin-body {
-    padding-top: 0 !important;
+  padding-top: 0 !important;
 }
+
 /* =========================================================
    30. VITRINES: barra com quantidade + botão "Filtros" que abre um painel
    (lateral no desktop/tablet; gaveta de baixo para cima no smartphone)
    (escrito em CSS puro: o mesmo bloco está no style.scss e no style.css)
    ======================================================== */
 .vitrine-barra {
-    border-top: 1px solid #ece7de;
-    border-bottom: 1px solid #ece7de;
-    padding: 0.6rem 0;
+  border-top: 1px solid #ece7de;
+  border-bottom: 1px solid #ece7de;
+  padding: 0.6rem 0;
 }
 
 .vitrine-total {
-    font-size: 0.8rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #6c6c6c;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6c6c6c;
 }
 
 .vitrine-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    border: 1px solid #d9d3c7;
-    border-radius: 999px;
-    padding: 0.25rem 0.75rem;
-    font-size: 0.78rem;
-    color: #111111;
-    text-decoration: none;
-    background-color: #faf8f4;
-    transition: border-color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border: 1px solid #d9d3c7;
+  border-radius: 999px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.78rem;
+  color: #111111;
+  text-decoration: none;
+  background-color: #faf8f4;
+  transition: border-color 0.2s ease;
 }
 
 .vitrine-chip:hover {
-    border-color: #111111;
-    color: #111111;
+  border-color: #111111;
+  color: #111111;
 }
 
 .btn-filtros {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    border: 1px solid #111111;
-    border-radius: 999px;
-    padding: 0.4rem 1.1rem;
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #111111;
-    background-color: #ffffff;
-    transition: background-color 0.2s ease, color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid #111111;
+  border-radius: 999px;
+  padding: 0.4rem 1.1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #111111;
+  background-color: #ffffff;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .btn-filtros:hover,
 .btn-filtros:focus-visible {
-    background-color: #111111;
-    color: #ffffff;
+  background-color: #111111;
+  color: #ffffff;
 }
 
 .filtros-contador {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 1.25rem;
-    height: 1.25rem;
-    border-radius: 999px;
-    font-size: 0.7rem;
-    background-color: #111111;
-    color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  background-color: #111111;
+  color: #ffffff;
 }
 
 .btn-filtros:hover .filtros-contador,
 .btn-filtros:focus-visible .filtros-contador {
-    background-color: #ffffff;
-    color: #111111;
+  background-color: #ffffff;
+  color: #111111;
 }
 
 .painel-filtros {
-    --bs-offcanvas-width: 360px;
+  --bs-offcanvas-width: 360px;
 }
 
 .painel-filtros .offcanvas-header {
-    border-bottom: 1px solid #ece7de;
+  border-bottom: 1px solid #ece7de;
 }
 
 .painel-filtros .offcanvas-title {
-    font-size: 0.95rem;
-    letter-spacing: 0.12em;
-    font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  font-weight: 600;
 }
 
 .painel-filtros fieldset {
-    border: 0;
-    padding: 0;
-    margin-left: 0;
-    margin-right: 0;
+  border: 0;
+  padding: 0;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .painel-filtros-titulo {
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #6c6c6c;
-    margin-bottom: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #6c6c6c;
+  margin-bottom: 0.5rem;
 }
 
 .opcao-filtro {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.7rem 0.25rem;
-    border-bottom: 1px solid #f1ede6;
-    cursor: pointer;
-    font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 0.25rem;
+  border-bottom: 1px solid #f1ede6;
+  cursor: pointer;
+  font-size: 0.9rem;
 }
 
 .opcao-filtro input {
-    accent-color: #111111;
-    width: 1.05rem;
-    height: 1.05rem;
-    flex-shrink: 0;
+  accent-color: #111111;
+  width: 1.05rem;
+  height: 1.05rem;
+  flex-shrink: 0;
 }
 
 .opcao-filtro small {
-    margin-left: auto;
-    color: #8a8a8a;
+  margin-left: auto;
+  color: #8a8a8a;
 }
 
 .opcao-filtro:has(input:checked) span {
-    font-weight: 600;
+  font-weight: 600;
 }
 
 .opcao-filtro.indisponivel {
-    opacity: 0.4;
-    cursor: not-allowed;
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
 .painel-filtros-rodape {
-    padding: 1rem;
-    border-top: 1px solid #ece7de;
-    background-color: #ffffff;
+  padding: 1rem;
+  border-top: 1px solid #ece7de;
+  background-color: #ffffff;
 }
 
 .painel-filtros-rodape .btn {
-    border-radius: 999px;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    padding: 0.6rem 1rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 0.6rem 1rem;
 }
 
 body:has(.painel-filtros.show) .whatsapp-float-btn,
 body:has(.painel-filtros.showing) .whatsapp-float-btn {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 @media (max-width: 575.98px) {
-    .vitrine-barra {
-        position: sticky;
-        top: var(--altura-cabecalho, 93px);
-        z-index: 5;
-        background-color: #ffffff;
-    }
-
-    .painel-filtros.offcanvas-end {
-        top: auto;
-        right: 0;
-        left: 0;
-        width: 100%;
-        height: auto;
-        max-height: 85vh;
-        border-left: 0;
-        border-radius: 1rem 1rem 0 0;
-        transform: translateY(100%);
-    }
-
-    .painel-filtros.offcanvas-end.showing,
-    .painel-filtros.offcanvas-end.show:not(.hiding) {
-        transform: none;
-    }
-}
-/*# sourceMappingURL=style.css.map */
+  .vitrine-barra {
+    position: sticky;
+    top: var(--altura-cabecalho, 93px);
+    z-index: 5;
+    background-color: #ffffff;
+  }
+  .painel-filtros.offcanvas-end {
+    top: auto;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    max-height: 85vh;
+    border-left: 0;
+    border-radius: 1rem 1rem 0 0;
+    transform: translateY(100%);
+  }
+  .painel-filtros.offcanvas-end.showing,
+  .painel-filtros.offcanvas-end.show:not(.hiding) {
+    transform: none;
+  }
+}/*# sourceMappingURL=style.css.map */
