@@ -103,7 +103,6 @@ $resultado_pedidos = $stmt_pedidos->get_result();
                                 </div>
                                 <div>
                                     <span class="d-block small text-muted text-uppercase fw-semibold">Situação</span>
-                                    <?php?>
                                     <?php if ($status_pedido === 'Cancelado'): ?>
                                         <span class="badge bg-danger">✕ Cancelado</span>
                                     <?php elseif ($status_entrega === 'Recebido pelo cliente'): ?>
