@@ -16,7 +16,7 @@
     </p>
 
     <div class="bloco-dados-pagamento d-flex flex-column flex-sm-row align-items-center justify-content-center gap-3 text-center text-sm-start">
-        <p class="mb-0">Clique no botão ao lado e solicite os dados de pagamento de compra pelo Whats!</p>
+        <p class="mb-0">Clique no botão e solicite os dados de pagamento de compra pelo Whats!</p>
         <a href="https://wa.me/5544997020518?text=<?= rawurlencode('Olá! Gostaria de receber os dados para pagamento da minha compra.'); ?>"
            target="_blank" rel="noopener" class="btn btn-whatsapp-custom text-white text-uppercase flex-shrink-0">
             Solicitar dados pelo WhatsApp
