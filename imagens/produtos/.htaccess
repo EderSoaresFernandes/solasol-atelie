@@ -1,0 +1,12 @@
+# Pasta de imagens (inclui imagens/produtos): serve apenas arquivos de imagem.
+# Se alguém conseguir enviar um .php aqui, ele NÃO será executado nem baixado.
+Options -Indexes -ExecCGI
+Require all denied
+
+<FilesMatch "\.(jpe?g|png|gif|webp|avif|ico|svg)$">
+    Require all granted
+</FilesMatch>
+
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+</IfModule>

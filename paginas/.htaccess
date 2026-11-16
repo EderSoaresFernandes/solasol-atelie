@@ -1,0 +1,9 @@
+# Estas paginas sao carregadas por dentro do index.php (template) via include do PHP.
+# O navegador nao pode abri-las diretamente; a unica excecao e o logout.php, chamado pelo link "Sair".
+Options -Indexes
+DirectoryIndex disabled
+Require all denied
+
+<Files "logout.php">
+    Require all granted
+</Files>

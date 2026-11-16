@@ -1,0 +1,253 @@
+<title>DER SolaSol Ateliê</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --bg: #fbfaf7;
+  --surface: #ffffff;
+  --fg: #1c1b19;
+  --muted: #6b675f;
+  --line: #e6e1d7;
+  --accent: #e0a100;
+  --accent-ink: #7a5800;
+  --nn: #1f6f5c;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #161513; --surface: #1f1e1b; --fg: #efebe3; --muted: #a59f94; --line: #34312c;
+    --accent: #f2b824; --accent-ink: #f2c95a; --nn: #6fc7ad; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #161513; --surface: #1f1e1b; --fg: #efebe3; --muted: #a59f94; --line: #34312c;
+  --accent: #f2b824; --accent-ink: #f2c95a; --nn: #6fc7ad; color-scheme: dark;
+}
+body {
+  background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 15px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.pagina { max-width: 1100px; margin: 0 auto; padding-block: 40px 64px; display: grid; gap: 40px; }
+header { display: grid; gap: 6px; border-bottom: 2px solid var(--accent); padding-bottom: 20px; }
+.rotulo { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+h1 { font-family: var(--font-display); font-size: clamp(30px, 5vw, 44px); line-height: 1.1; margin: 0; text-wrap: balance; letter-spacing: .02em; }
+h2 { font-family: var(--font-display); font-size: 26px; margin: 0 0 12px; letter-spacing: .02em; }
+p { margin: 0; max-width: 68ch; }
+.resumo { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+.resumo div { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; }
+.resumo strong { display: block; font-size: 28px; font-family: var(--font-display); line-height: 1; font-variant-numeric: tabular-nums; }
+.resumo span { color: var(--muted); font-size: 13px; }
+.diagrama { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px; overflow-x: auto; }
+.diagrama pre { margin: 0; min-width: 760px; }
+.legenda { color: var(--muted); font-size: 13px; margin-top: 10px; }
+.tabela-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+tr:last-child td { border-bottom: 0; }
+code { font-family: var(--font-mono); font-size: 13px; }
+.chip { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: .05em; padding: 2px 8px; border-radius: 999px; border: 1px solid currentColor; }
+.chip.nn { color: var(--nn); }
+.chip.um { color: var(--accent-ink); }
+.nn-box { border-left: 4px solid var(--nn); background: var(--surface); padding: 16px 20px; border-radius: 0 10px 10px 0; display: grid; gap: 8px; }
+ul { margin: 0; padding-left: 20px; }
+li { margin-bottom: 4px; }
+</style>
+
+<div class="pagina">
+  <header>
+    <span class="rotulo">Modelagem e Banco de Dados · banco <code>solasol_atelie</code> (MariaDB/InnoDB)</span>
+    <h1>DER — SolaSol Ateliê</h1>
+    <p>Diagrama de entidade relacionamento da loja virtual e do painel administrativo, gerado a partir da estrutura real do banco em 15/11/2026.</p>
+  </header>
+
+  <section class="resumo" aria-label="Números do banco">
+    <div><strong>15</strong><span>tabelas</span></div>
+    <div><strong>15</strong><span>chaves primárias (uma por tabela)</span></div>
+    <div><strong>8</strong><span>chaves estrangeiras</span></div>
+    <div><strong>1</strong><span>relacionamento N:N</span></div>
+  </section>
+
+  <section>
+    <h2>Diagrama</h2>
+    <div class="diagrama">
+<pre class="mermaid">
+erDiagram
+    clientes ||--o{ pedidos : "faz"
+    pedidos ||--|{ pedido_itens : "contém"
+    produto ||--o{ pedido_itens : "aparece em"
+    produto ||--o{ produto_fotos : "tem"
+    produto ||--o{ produto_cores_tamanhos : "tem estoque em"
+    produto ||--o{ produto_avaliacoes : "recebe"
+    clientes |o--o{ produto_avaliacoes : "escreve"
+    produto ||--o{ produto_duvidas : "recebe"
+
+    clientes {
+        int id_cliente PK
+        varchar nome
+        varchar sobrenome
+        varchar email UK
+        varchar cpf UK
+        varchar cpf_cnpj
+        varchar whatsapp
+        varchar senha "hash"
+        varchar cep
+        varchar cidade
+        varchar estado
+    }
+    pedidos {
+        int id_pedido PK
+        int id_cliente FK "NULL = visitante"
+        varchar nome_cliente
+        varchar forma_pagamento "pix ou cartao"
+        decimal subtotal
+        decimal frete
+        decimal desconto_pix
+        decimal desconto_cupom
+        decimal total_geral
+        varchar cupom_codigo
+        varchar status_pedido
+        varchar codigo_rastreio
+        timestamp data_criacao
+    }
+    pedido_itens {
+        int id_item PK
+        int id_pedido FK
+        int id_produto FK
+        varchar nome_produto
+        varchar cor
+        varchar tamanho
+        int quantidade
+        decimal preco_unitario
+    }
+    produto {
+        int id_produto PK
+        varchar nome
+        varchar categoria
+        decimal preco_original
+        decimal preco_pix
+        int parcelas_max
+        int estoque
+        varchar imagem_url
+    }
+    produto_cores_tamanhos {
+        int id PK
+        int produto_id FK
+        varchar cor
+        varchar tamanho
+        int quantidade
+    }
+    produto_fotos {
+        int id PK
+        int produto_id FK
+        varchar imagem_url
+    }
+    produto_avaliacoes {
+        int id_avaliacao PK
+        int produto_id FK
+        int id_cliente FK
+        decimal nota
+        text comentario
+    }
+    produto_duvidas {
+        int id_duvida PK
+        int produto_id FK
+        text pergunta
+        text resposta
+        varchar nome_cliente
+    }
+    cupons {
+        int id_cupom PK
+        varchar codigo UK
+        enum tipo "percentual ou valor"
+        enum regra "livre ou primeira_compra"
+        decimal valor
+        decimal valor_minimo
+        int limite_uso
+        int usos
+    }
+    promocoes {
+        int id PK
+        varchar nome
+        enum tipo
+        decimal valor
+        decimal valor_minimo
+        varchar categorias
+        datetime inicio
+        datetime fim
+    }
+    configuracoes_frete {
+        int id PK
+        decimal valor_minimo_frete_gratis
+        decimal dentro_estado
+        decimal regiao_sul
+        int prazo_sul
+    }
+    destaques_videos {
+        int id PK
+        varchar categoria
+        varchar video_url
+        varchar titulo_legenda
+    }
+    admin_usuarios {
+        int id PK
+        varchar usuario UK
+        varchar nome
+        varchar senha_hash
+        varchar permissoes
+        int sessao_versao
+    }
+    admin_login_tentativas {
+        int id PK
+        varchar ip
+        datetime criado_em
+    }
+    cliente_login_tentativas {
+        int id PK
+        varchar ip
+        datetime criado_em
+    }
+</pre>
+    </div>
+    <p class="legenda">Nas entidades aparecem as colunas principais (a tabela <code>pedidos</code> tem 33 colunas no total). PK = chave primária · FK = chave estrangeira · UK = valor único. As 6 tabelas sem linhas de ligação guardam configurações e controle de acesso e não dependem de outras tabelas.</p>
+  </section>
+
+  <section class="nn-box">
+    <h2>Relacionamento N:N — Pedidos × Produtos</h2>
+    <p>Um <strong>pedido</strong> tem vários <strong>produtos</strong>, e um produto aparece em vários pedidos. O banco resolve isso com a tabela associativa <code>pedido_itens</code>: cada linha liga um pedido a um produto e guarda a quantidade, a cor, o tamanho e o preço do momento da compra.</p>
+    <p><code>pedidos (1) ──&lt; pedido_itens &gt;── (1) produto</code></p>
+  </section>
+
+  <section>
+    <h2>Chaves estrangeiras</h2>
+    <div class="tabela-wrap">
+      <table>
+        <thead><tr><th>Tabela</th><th>Coluna</th><th>Referencia</th><th>Ao excluir o pai</th><th>Tipo</th></tr></thead>
+        <tbody>
+          <tr><td><code>pedido_itens</code></td><td><code>id_pedido</code></td><td><code>pedidos.id_pedido</code></td><td>CASCADE (itens saem com o pedido)</td><td><span class="chip nn">N:N</span></td></tr>
+          <tr><td><code>pedido_itens</code></td><td><code>id_produto</code></td><td><code>produto.id_produto</code></td><td>SET NULL (o histórico do pedido fica)</td><td><span class="chip nn">N:N</span></td></tr>
+          <tr><td><code>pedidos</code></td><td><code>id_cliente</code></td><td><code>clientes.id_cliente</code></td><td>SET NULL</td><td><span class="chip um">1:N</span></td></tr>
+          <tr><td><code>produto_cores_tamanhos</code></td><td><code>produto_id</code></td><td><code>produto.id_produto</code></td><td>CASCADE</td><td><span class="chip um">1:N</span></td></tr>
+          <tr><td><code>produto_fotos</code></td><td><code>produto_id</code></td><td><code>produto.id_produto</code></td><td>CASCADE</td><td><span class="chip um">1:N</span></td></tr>
+          <tr><td><code>produto_avaliacoes</code></td><td><code>produto_id</code></td><td><code>produto.id_produto</code></td><td>CASCADE</td><td><span class="chip um">1:N</span></td></tr>
+          <tr><td><code>produto_avaliacoes</code></td><td><code>id_cliente</code></td><td><code>clientes.id_cliente</code></td><td>SET NULL</td><td><span class="chip um">1:N</span></td></tr>
+          <tr><td><code>produto_duvidas</code></td><td><code>produto_id</code></td><td><code>produto.id_produto</code></td><td>CASCADE</td><td><span class="chip um">1:N</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Para que serve cada grupo de tabelas</h2>
+    <ul>
+      <li><strong>Catálogo:</strong> <code>produto</code>, <code>produto_fotos</code>, <code>produto_cores_tamanhos</code> (estoque por cor e tamanho).</li>
+      <li><strong>Clientes e vendas:</strong> <code>clientes</code>, <code>pedidos</code>, <code>pedido_itens</code>.</li>
+      <li><strong>Interação na página do produto:</strong> <code>produto_avaliacoes</code>, <code>produto_duvidas</code>.</li>
+      <li><strong>Regras comerciais:</strong> <code>cupons</code>, <code>promocoes</code>, <code>configuracoes_frete</code>.</li>
+      <li><strong>Conteúdo da Home:</strong> <code>destaques_videos</code>.</li>
+      <li><strong>Painel e segurança:</strong> <code>admin_usuarios</code>, <code>admin_login_tentativas</code>, <code>cliente_login_tentativas</code> (limite de tentativas de login).</li>
+    </ul>
+  </section>
+</div>

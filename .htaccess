@@ -1,0 +1,12 @@
+# Não lista o conteúdo das pastas no navegador
+Options -Indexes
+
+# Arquivos internos: só o PHP pode incluí-los, o navegador não pode abri-los diretamente
+<FilesMatch "^(config_admin|conexao|funcoes|funcoes_estoque|funcoes_cliente|funcoes_admin|funcoes_catalogo|seguranca|gerar_hash)(\.exemplo)?\.php$">
+    Require all denied
+</FilesMatch>
+
+# Arquivos de backup, dump, log e configuração nunca devem ser servidos
+<FilesMatch "\.(sql|bak|old|log|ini|env|sh|zip|tar|gz)$">
+    Require all denied
+</FilesMatch>

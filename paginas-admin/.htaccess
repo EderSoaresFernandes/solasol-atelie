@@ -1,0 +1,4 @@
+# Estas páginas só podem ser carregadas por dentro do admin.php.
+# O include do PHP lê direto do disco e NÃO passa pelo Apache, então continua funcionando.
+Options -Indexes
+Require all denied

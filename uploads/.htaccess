@@ -1,0 +1,12 @@
+# Pasta de uploads: lista de permissão. Só serve os vídeos gerados pelo próprio sistema.
+# Qualquer outro arquivo (inclusive .php, .phtml, .phar, .html, .svg) é bloqueado.
+Options -Indexes -ExecCGI
+Require all denied
+
+<FilesMatch "^video_[0-9]+_[0-9]+\.mp4$">
+    Require all granted
+</FilesMatch>
+
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+</IfModule>

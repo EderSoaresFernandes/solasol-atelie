@@ -1,0 +1,16 @@
+# Credenciais locais (use os arquivos *.exemplo.php como modelo)
+conexao.php
+config_admin.php
+
+# Scripts de migração antigos (substituídos por banco/solasol_atelie.sql)
+migracao_*.sql
+
+# Backups, logs e arquivos temporários
+*.bak
+*.bak-*
+*.log
+*.zip
+Thumbs.db
+desktop.ini
+.vscode/
+*.css.map

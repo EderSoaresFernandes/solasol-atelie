@@ -1,0 +1,2148 @@
+/* =============================================================
+   ÍNDICE
+   1.  Base
+   2.  Header, menu e banner
+   3.  Vídeos em destaque da Home
+   4.  Seção "Nossa História"
+   5.  Cards de produtos
+   6.  Lightbox, parcelamento, avaliações e dúvidas
+   7.  Página da Loja (galeria, logo, botão WhatsApp)
+   8.  Footer (redes sociais | ajuda | direitos)
+   9.  Botões de redes sociais e botão flutuante do WhatsApp
+   10. Páginas institucionais (Troca e Devoluções, Formas de Pagamento)
+   11. Painel Admin
+   12. Página de detalhes do produto e vitrine
+   13. Estilos do Modal de Escolha de Cor e Tamanho (Sacola)
+   ========================================================== */
+
+/* =============================================================
+   1. BASE
+   =========================================================== */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden !important;   // navegadores antigos (sem suporte a "clip")
+}
+
+@supports (overflow-x: clip) {
+    html, body {
+        overflow-x: clip !important;
+    }
+}
+
+main {
+  margin-top: 40px; 
+}
+
+/* =============================================================
+   2. HEADER, MENU E BANNER
+   =========================================================== */
+
+.header-fixed-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  width: 100%;
+  background-color: #ffffff;
+  border-bottom: 1px solid #ebe6df; 
+}
+
+header {
+  a {
+    display: inline-block;
+    
+    img {
+      max-height: 60px;    
+      width: auto;         
+      object-fit: contain;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.02); 
+      }
+    }
+  }
+}
+
+.header-icon-btn {
+        padding: 6px !important;
+        transition: transform 0.2s ease, color 0.2s ease !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+
+        &:hover {
+            transform: scale(1.15) !important; 
+            color: #ffb703 !important;
+    }
+}
+
+.atelie-btn-link {
+        padding: 8px 16px !important;
+        margin-left: 12px !important;
+        border-radius: 6px !important;
+        transition: background-color 0.2s ease, color 0.2s ease !important;
+        
+        &:hover {
+            background-color: #f8f6f2 !important;
+            color: #111111 !important;
+    }
+}
+
+.main-nav-shadow {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); 
+  position: relative;
+  z-index: 10;
+  border-top: 1px solid #f1ece4; 
+}
+
+#bannerPrincipal {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background-color: #f8f6f2; 
+  overflow: hidden;
+
+  .carousel-inner {
+    max-height: 400px; 
+  }
+
+  .carousel-item {
+    text-align: center;
+    background-color: #f8f6f2;
+    
+    img {
+      height: 400px;        
+      width: 100%;
+      object-fit: contain;   
+      margin: 0 auto;
+    }
+  }
+
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    filter: invert(1);
+  }
+}
+
+.navbar-nav {
+  .nav-item {
+    .nav-link {
+      position: relative;
+      transition: all 0.25s ease-in-out;
+      border: 1px solid transparent; 
+      border-radius: 4px;
+      padding: 8px 16px !important;
+
+      &:hover, &.active {
+        background-color: #fcfbfa; 
+        border-color: #e5e0d8;    
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05); 
+        color: #111111 !important;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 4px;
+          left: 12px;
+          right: 12px;
+          height: 2.5px;
+          background-color: #ffb703; 
+          border-radius: 2px;
+        }
+      }
+    }
+  }
+}
+
+/* =============================================================
+   3. VÍDEOS EM DESTAQUE DA HOME (quadro + grade vertical 9:16)
+   =========================================================== */
+$video-destaque-largura-max: 300px;
+
+.card-video-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    background-color: #000;
+
+    video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.7;
+        transition: transform 0.5s ease;
+    }
+
+    &:hover video {
+        transform: scale(1.03);
+    }
+
+    .video-overlay-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        width: 100%;
+        padding: 0 1rem;
+        z-index: 2;
+
+        .video-title {
+            font-size: 2rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #fff;
+            margin: 0;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+        }
+
+        .video-subtitle {
+            font-size: 0.95rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            color: #f8f9fa;
+            margin-top: 0.5rem;
+            margin-bottom: 0;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+        }
+    }
+}
+
+.destaques-videos-quadro {
+    width: calc(100% - 2rem);
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem;
+    background-color: #fcfbfa;
+    border: 1px solid #ebe6df;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+}
+
+.destaques-videos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, $video-destaque-largura-max));
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.video-destaque-card {
+    position: relative;
+    width: 100%;
+    max-width: $video-destaque-largura-max;
+    margin: 0 auto;
+    aspect-ratio: 9 / 16;    // formato vertical, igual ao vídeo gravado no celular
+    height: auto;
+    overflow: hidden;
+    background: #000;
+    border-radius: 6px;
+
+    .video-destaque {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 1;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .destaques-videos-quadro {
+        padding: 1.75rem 1rem;
+    }
+
+    .destaques-videos-grid {
+        grid-template-columns: minmax(0, 320px);
+        gap: 1.25rem;
+    }
+}
+
+/* =============================================================
+   4. SEÇÃO "NOSSA HISTÓRIA" DA HOME
+   =========================================================== */
+.nossa-historia {
+    max-width: 1400px;          
+    margin: 0 auto;
+    padding: 0 1.5rem 1.6rem;     
+    text-align: center;
+
+    .nossa-historia-titulo {
+        display: inline-block;    
+        font-size: 1.92rem;       
+        font-weight: 500;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #111111;
+        margin-bottom: 1.5rem;
+
+        &::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 2.5px;
+            margin-top: 0.75rem;
+            background-color: #ffb703;
+            border-radius: 2px;
+        }
+    }
+
+    p {
+        font-size: 1.5rem;        
+        line-height: 1.6;
+        color: #333333;
+        margin-bottom: 1.5rem;
+    }
+
+    .nossa-historia-hashtag {
+        font-weight: 600;
+        color: #111111;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .nossa-historia {
+        padding: 0 1.25rem 1.2rem;
+
+        .nossa-historia-titulo {
+            font-size: 1.56rem;   
+        }
+
+        p {
+            font-size: 1.25rem;   
+        }
+    }
+}
+
+/* =============================================================
+   5. CARDS DE PRODUTOS
+   =========================================================== */
+.product-card {
+  background-color: #fcfbfa;
+  border: 1px solid #ebe6df;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &:hover {
+    border-color: #d1c7bc;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  }
+
+  .product-image-wrapper {
+    width: 100%;
+    height: 380px; 
+    overflow: hidden;
+    background-color: #f4f1ea;
+    position: relative;
+
+    .product-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+  }
+
+  &:hover .product-img {
+    transform: scale(1.06);
+  }
+
+  .product-title {
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    color: #1a1a1a;
+    min-height: 36px; 
+  }
+
+  .product-sizes {
+    .size-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border: 1px solid #dcd6cd;
+      border-radius: 50%;
+      font-size: 0.75rem;
+      color: #555;
+      background-color: #fff;
+      transition: all 0.2s;
+
+      &:hover {
+        border-color: #111;
+        color: #111;
+      }
+    }
+  }
+
+  .product-action {
+    .btn-dark {
+      background-color: #212529;
+      border-color: #212529;
+      letter-spacing: 1px;
+      font-size: 0.75rem;
+      transition: background-color 0.2s ease;
+
+      &:hover {
+        background-color: #ffb703; 
+        border-color: #ffb703;
+        color: #111;
+      }
+    }
+  }
+}
+
+/* =============================================================
+   6. LIGHTBOX, PARCELAMENTO, AVALIAÇÕES E DÚVIDAS
+   =========================================================== */
+
+.lightbox-modal-content {
+    background-color: #ffffff !important; 
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.lightbox-modal-container {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    max-height: 80vh;
+    max-width: 85vw;
+
+    img {
+        max-height: 80vh;
+        max-width: 100vw;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        transition: transform 0.3s ease;
+        transform-origin: center center;
+        cursor: zoom-in;
+    }
+}
+
+.lightbox-btn-proximo {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    z-index: 1060;
+    transition: background-color 0.2s;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+        color: #ffb703;
+    }
+
+    &.btn-prev { left: 5px; }
+    &.btn-next { right: 5px; }
+}
+
+.bloco-parcelamento-box {
+    background-color: transparent; 
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 15px;
+    margin-top: 10px;
+    margin-bottom: 24px;
+    
+    .parcelamento-titulo {
+        font-size: 0.95rem; 
+        font-weight: 600;
+        color: #212529;
+        margin-bottom: 12px;
+        border-bottom: 1px solid #dee2e6;
+        padding-bottom: 6px;
+    }
+
+    .parcelamento-linha {
+        font-size: 0.92rem; 
+        color: #333333;
+        padding: 6px 0;
+        border-bottom: 1px dashed #e9ecef;
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+
+    .parcelamento-aviso {
+        font-size: 0.75rem; 
+        color: #6c757d;
+        margin-top: 12px;
+        margin-bottom: 0;
+    }
+}
+
+.star-rating { 
+    font-size: 1.4rem !important;
+    cursor: pointer; 
+    
+    span { 
+        transition: transform 0.2s; 
+        &:hover { 
+            transform: scale(1.2); 
+        }
+    }
+}
+
+.star-item {
+    font-size: 2.2rem !important;
+}
+
+.card {
+    .form-control {
+        border-color: #dee2e6;
+        box-shadow: none;
+        
+        &:focus {
+            border-color: #212529;
+            box-shadow: 0 0 0 0.1rem rgba(33, 37, 41, 0.15);
+        }
+    }
+
+    .btn-dark {
+        transition: all 0.2s ease-in-out;
+        
+        &:hover {
+            background-color: #343a40;
+            transform: translateY(-1px);
+        }
+    }
+}
+
+/* =============================================================
+   7. PÁGINA DA LOJA (galeria, logo, botão WhatsApp)
+   =========================================================== */
+.galeria-item {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
+    }
+}
+
+.loja-logo-container {
+    img {
+        max-height: 70px !important; 
+        width: auto !important;
+        object-fit: contain;
+    }
+}
+
+.btn-whatsapp-custom {
+    background-color: #25D366 !important;
+    border-color: #25D366 !important;
+    color: #ffffff !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+        background-color: #1ebc57 !important;
+        border-color: #1ebc57 !important;
+        color: #ffffff !important;
+        transform: translateY(-1px);
+    }
+}
+
+/* =============================================================
+   8. FOOTER: Redes Sociais | Ajuda | Direitos autorais ao centro
+   =========================================================== */
+.site-footer {
+
+    .footer-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.75rem;
+    }
+
+    .footer-esquerda {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.75rem;
+    }
+
+    .footer-redes {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-redes-label {
+        font-size: 1.26rem;
+        margin-bottom: 0.6rem;
+        white-space: nowrap;
+    }
+
+    .footer-redes-icones {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .footer-ajuda-area {
+        display: flex;
+        justify-content: center;
+    }
+
+    .footer-ajuda {
+        text-align: left;            // textos da esquerda para a direita
+    }
+
+    .footer-titulo {
+        display: block;
+        font-size: 1.326rem;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: #111111;
+        margin-bottom: 0.8rem;
+    }
+
+    .footer-lista {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+    }
+
+    .footer-link {
+        font-size: 1.08rem;
+        color: #333333;
+        text-decoration: none;
+        white-space: nowrap;         // evita quebrar "Formas de Pagamento" em duas linhas
+        transition: color 0.2s ease;
+
+        &:hover {
+            color: #111111;
+            text-decoration: underline;
+            text-decoration-color: #ffb703;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 5px;
+        }
+    }
+
+    .footer-copy {
+        text-align: center;
+
+        p {
+            margin: 0;
+            font-size: 1.05rem;
+        }
+    }
+}
+
+@media (min-width: 1300px) {
+    .site-footer {
+        .footer-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+            align-items: center;     // centraliza verticalmente
+        }
+
+        .footer-esquerda {
+            flex-direction: row;
+            align-items: center;     // Redes centralizadas na altura do quadro do footer
+            gap: 0;
+            padding-left: 1.75rem;   // recuo do canto esquerdo
+        }
+
+        .footer-redes {
+            flex: 0 0 auto;
+        }
+
+        .footer-ajuda-area {
+            flex: 1;
+        }
+
+        .footer-copy {
+            justify-self: center;    // centraliza horizontalmente
+            align-self: center;      // centraliza verticalmente
+        }
+    }
+}
+
+/* =============================================================
+   9. BOTÕES DE REDES SOCIAIS E BOTÃO FLUTUANTE DO WHATSAPP
+   =========================================================== */
+.social-icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 54px;                  
+    height: 54px;
+    border-radius: 50%;
+    background-color: #e9ecef;
+    color: #333333;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+
+    svg {
+        width: 26px;               
+        height: 26px;
+    }
+
+    &.tiktok svg {
+        width: 23px;               
+        height: 23px;
+    }
+
+    &:hover {
+        transform: translateY(-3px);
+        color: #ffffff;
+        box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    &.instagram:hover {
+        background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    }
+
+    &.facebook:hover {
+        background-color: #1877F2;
+    }
+
+    &.tiktok:hover {
+        background-color: #010101;
+    }
+}
+
+.whatsapp-float-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1050;
+    background-color: #25D366;
+    color: #ffffff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    transition: all 0.3s ease;
+    text-decoration: none;
+
+    svg {
+        width: 32px;
+        height: 32px;
+        fill: #ffffff;
+    }
+
+    &:hover {
+        background-color: #1ebc57;
+        color: #ffffff;
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+    }
+}
+
+/* =============================================================
+   10. PÁGINAS INSTITUCIONAIS (Troca e Devoluções, Formas de Pagamento)
+   =========================================================== */
+.pagina-institucional {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 1.5rem 3rem;
+    color: #333333;
+
+    .pagina-institucional-titulo {
+        display: table;              // largura = largura do título
+        margin: 0 auto 2rem;
+        text-align: center;
+        font-size: 1.7rem;
+        font-weight: 500;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #111111;
+
+        &::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 2.5px;
+            margin-top: 1rem;
+            background-color: #ffb703;
+            border-radius: 2px;
+        }
+    }
+
+    h2 {
+        font-size: 1.44rem;          // +20%
+        font-weight: 600;
+        color: #111111;
+        margin-top: 2.25rem;
+        margin-bottom: 0.9rem;
+    }
+
+    p {
+        font-size: 1.2rem;           // +20%
+        line-height: 1.8;
+        margin-bottom: 1rem;
+    }
+
+    a:not(.btn) {
+        color: #111111;
+        text-decoration: none;
+    }
+
+    .destaque-aviso {
+        font-size: 1.2rem;           // +20%
+        background-color: #fcfbfa;
+        border: 1px solid #ebe6df;
+        border-left: 4px solid #ffb703;
+        border-radius: 6px;
+        padding: 1rem 1.25rem;
+        margin: 1.5rem 0;
+        line-height: 1.7;
+    }
+
+    .bloco-dados-pagamento {
+        background-color: #fcfbfa;
+        border: 1px solid #ebe6df;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin: 1.25rem 0 1.5rem;
+
+        p { line-height: 1.6; }
+
+        .dados-ou {
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 0.96rem;      // +20%
+            letter-spacing: 2px;
+            color: #6c757d;
+            margin: 0.5rem 0 1rem;
+        }
+    }
+
+    .assinatura-pagina {
+        text-align: center;
+        font-weight: 600;
+        margin-top: 2.5rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .pagina-institucional {
+        padding: 0 1.25rem 2.5rem;
+
+        .pagina-institucional-titulo {
+            font-size: 1.35rem;
+        }
+    }
+}
+
+/* =============================================================
+   11. PAINEL ADMIN
+   (substitui a seção 11 inteira do seu SCSS)
+   =========================================================== */
+
+$admin-escala:          1.3;                       
+$admin-titulo-tamanho:  1.25rem * $admin-escala;   
+$admin-logo-altura:     35px * $admin-escala * 1.2;
+$admin-titulo-recuo:    1.25rem;     
+$admin-btn-largura:     8.5rem;                    
+$admin-btn-espaco:      0.35rem;
+
+.btn-outline-custom {
+    color: #212529;
+    background-color: transparent;
+    border: 1px solid #212529;
+    transition: all 0.2s ease-in-out;
+
+    &:hover,
+    &:active,
+    &:focus,
+    &.active {
+        color: #ffffff !important;
+        background-color: #212529 !important;
+        border-color: #212529 !important;
+    }
+}
+
+.admin-sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+    background-color: #ffffff;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.admin-header {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.admin-header-titulo {
+    flex: 0 0 auto;
+    margin: 0 0 0 $admin-titulo-recuo;
+    font-size: $admin-titulo-tamanho;
+}
+
+.admin-header-logo {
+    flex: 1 1 0;
+    min-width: 0;
+    text-align: center;
+}
+
+.admin-logo-img {
+    height: $admin-logo-altura;
+    width: auto;
+    object-fit: contain;
+}
+
+.admin-header-botoes {
+    flex: 0 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, $admin-btn-largura);
+    gap: $admin-btn-espaco;
+
+    form {
+        display: flex;
+        margin: 0;
+    }
+
+    .btn {
+        width: 100%;
+        white-space: nowrap;
+    }
+}
+
+@media (min-width: 1200px) {
+    .admin-header-botoes {
+        grid-template-columns: repeat(5, $admin-btn-largura);
+    }
+}
+
+@media (max-width: 991.98px) {
+    .admin-header-botoes {
+        flex: 1 0 100%;
+        grid-template-columns: repeat(auto-fill, minmax($admin-btn-largura, 1fr));
+    }
+}
+
+.admin-produto-img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+/* =============================================================
+   12. PÁGINA DE DETALHES DO PRODUTO E VITRINE
+   =========================================================== */
+.produto-img-carousel {
+    height: 480px;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+.scroll-lista {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.scroll-lista-duvidas {
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.data-avaliacao-small {
+    font-size: 0.7rem;
+}
+
+.aguardando-resposta-txt {
+    font-size: 0.75rem;
+}
+
+.cor-item {
+    width: 36px;
+    height: 36px;
+}
+
+.cor-legenda {
+    font-size: 0.75rem;
+}
+
+.btn-comprar-custom {
+    background-color: #2f4f4f;
+    border-color: #2f4f4f;
+}
+
+.descricao-produto-txt {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #212529;
+}
+
+.modal-pre-medidas {
+    font-family: 'Courier New', Courier, monospace;
+    white-space: pre-wrap;
+    line-height: 1.5;
+}
+
+.tamanho-btn-custom {
+    min-width: 44px;
+    height: 38px;
+}
+.btn-continuar-compras {
+    display: inline-block;
+    padding: 12px 40px;
+    background-color: transparent;
+    color: #111111;
+    border: 1px solid #111111;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+
+    &:hover {
+        background-color: #111111;
+        color: #ffffff;
+    }
+}
+
+/* =========================================================
+   13. Estilos do Modal de Escolha de Cor e Tamanho (Sacola)
+   ======================================================== */
+.btn-cor-opcao {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border: 1px solid #dee2e6;
+    border-radius: 20px;
+    background: #fff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+        border-color: #000;
+    }
+
+    &.active {
+        border-color: #000;
+        background-color: #000;
+        color: #fff;
+    }
+}
+
+.circulo-cor {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.btn-tamanho-opcao {
+    padding: 6px 16px;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    background: #fff;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+
+    &:hover {
+        border-color: #000;
+    }
+
+    &.active {
+        border-color: #000;
+        background-color: #000;
+        color: #fff;
+    }
+}
+
+/* =========================================================
+   14. Selo de segurança do rodapé (à direita, entre os direitos autorais e o botão do WhatsApp)
+   (escrito em CSS puro: o mesmo bloco está no style.css)
+   ======================================================== */
+.site-footer .footer-selos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.selo-seguranca {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.55rem 1rem 0.55rem 0.75rem;
+    background-color: #ffffff;
+    border: 1px solid #cfe6d8;
+    border-left: 4px solid #1e7a46;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    cursor: default;
+}
+
+.selo-seguranca svg {
+    width: 34px;
+    height: 34px;
+    flex: 0 0 auto;
+}
+
+.selo-textos {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+    text-align: left;
+}
+
+.selo-titulo {
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #1e7a46;
+}
+
+.selo-texto {
+    font-size: 0.8rem;
+    color: #555555;
+}
+
+@media (min-width: 1300px) {
+    .site-footer .footer-selos {
+        justify-self: center;
+        padding-right: 90px;
+    }
+}
+
+/* =========================================================
+   15. RESPONSIVO MODERNO (celular e tablet)
+   - Cabeçalho em uma linha: [☰] [logo] [busca + sacola]; o resto vai para a gaveta lateral
+   - Cabeçalho compacto ao rolar (some a faixa de avisos)
+   - Vitrine com 2 produtos por linha no celular
+   - Sacola em formato de cartões no celular
+   (escrito em CSS puro: o mesmo bloco está no style.scss e no style.css)
+   ======================================================== */
+
+.logo-topo {
+    max-height: 75px;
+    width: auto;
+    object-fit: contain;
+    transition: max-height 0.25s ease;
+}
+
+.top-bar {
+    max-height: 60px;
+    transition: max-height 0.25s ease, padding 0.25s ease;
+}
+
+body.header-compacto .top-bar {
+    max-height: 0;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+body.header-compacto .logo-topo {
+    max-height: 54px;
+}
+
+body.header-compacto .header-linha {
+    padding-top: 0.35rem !important;
+    padding-bottom: 0.35rem !important;
+}
+
+@media (min-width: 992px) {
+    .header-icon-btn.so-mobile {
+        display: none !important;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .header-icon-btn.so-desktop,
+    .dropdown.so-desktop {
+        display: none !important;
+    }
+
+    .logo-topo {
+        max-height: 48px;
+    }
+
+    body.header-compacto .logo-topo {
+        max-height: 40px;
+    }
+
+    .top-bar {
+        font-size: 0.72rem;
+        padding-top: 0.35rem !important;
+        padding-bottom: 0.35rem !important;
+    }
+
+    .header-icon-btn svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    main {
+        margin-top: 16px;
+    }
+}
+
+.menu-mobile {
+    width: 300px !important;
+    max-width: 85vw;
+}
+
+.menu-mobile-logo {
+    max-height: 42px;
+    width: auto;
+}
+
+.menu-mobile-ola {
+    background-color: #f8f6f2;
+    font-size: 0.95rem;
+}
+
+.menu-mobile-links a {
+    display: block;
+    padding: 0.95rem 1.5rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #111111;
+    text-decoration: none;
+    border-bottom: 1px solid #f1ece4;
+    border-left: 3px solid transparent;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.menu-mobile-links a:hover,
+.menu-mobile-links a:active {
+    background-color: #f8f6f2;
+    border-left-color: #ffb703;
+}
+
+.menu-mobile-secao {
+    padding: 0.75rem 0;
+}
+
+.menu-mobile-secao a {
+    display: block;
+    padding: 0.65rem 1.5rem;
+    font-size: 0.95rem;
+    color: #333333;
+    text-decoration: none;
+}
+
+.menu-mobile-secao a:hover {
+    background-color: #f8f6f2;
+    color: #111111;
+}
+
+@media (max-width: 767.98px) {
+    #bannerPrincipal .carousel-inner {
+        max-height: none;
+    }
+
+    #bannerPrincipal .carousel-item img {
+        height: auto;
+        max-height: 70vh;
+    }
+
+    #bannerPrincipal {
+        margin-bottom: 1.5rem !important;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .product-card .product-image-wrapper {
+        height: auto;
+        aspect-ratio: 3 / 4;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .container-fluid.px-4 {
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+    }
+
+    .product-card .product-info {
+        padding: 0.6rem !important;
+    }
+
+    .product-card .product-title {
+        font-size: 0.72rem;
+        min-height: 2.6em;
+        margin-bottom: 0.35rem !important;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .product-card .product-pricing {
+        margin-bottom: 0.35rem !important;
+    }
+
+    .product-card .product-pricing .fs-5 {
+        font-size: 0.95rem !important;
+    }
+
+    .product-card .product-pricing .small,
+    .product-card .product-pix .small {
+        font-size: 0.66rem !important;
+    }
+
+    .product-card .product-pix {
+        margin-bottom: 0.5rem !important;
+    }
+
+    .product-card .product-pix .fs-6 {
+        font-size: 0.9rem !important;
+    }
+
+    .product-card .product-sizes {
+        gap: 0.25rem !important;
+        flex-wrap: wrap;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .product-card .product-sizes .size-badge {
+        width: 24px;
+        height: 24px;
+        font-size: 0.65rem;
+    }
+
+    .product-card .product-action .btn {
+        font-size: 0.66rem;
+        padding: 0.45rem 0.25rem !important;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .tabela-sacola thead {
+        display: none;
+    }
+
+    .tabela-sacola,
+    .tabela-sacola tbody {
+        display: block;
+        width: 100%;
+    }
+
+    .tabela-sacola tr {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-areas:
+            "produto produto"
+            "qtd subtotal"
+            "acao acao";
+        gap: 0.6rem 0.75rem;
+        padding: 0.9rem 0.25rem;
+        border-bottom: 1px solid #ebe6df;
+    }
+
+    .tabela-sacola tr.table-danger {
+        background-color: #f8d7da;
+    }
+
+    .tabela-sacola td {
+        border: 0 !important;
+        padding: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+    }
+
+    .tabela-sacola .sc-produto { grid-area: produto; }
+    .tabela-sacola .sc-preco { display: none; }
+    .tabela-sacola .sc-qtd { grid-area: qtd; }
+
+    .tabela-sacola .sc-subtotal {
+        grid-area: subtotal;
+        align-self: center;
+        text-align: right;
+        font-size: 1rem;
+    }
+
+    .tabela-sacola .sc-acao {
+        grid-area: acao;
+        text-align: left !important;
+    }
+}
+
+.offcanvas.show ~ .whatsapp-float-btn,
+.offcanvas.showing ~ .whatsapp-float-btn {
+    display: none;
+}
+
+/* =========================================================
+   16. VITRINE: cartão inteiro clicável + segunda foto ao passar o mouse
+       RODAPÉ no celular/tablet: sem sobra no final, selo e WhatsApp menores e lado a lado
+   (escrito em CSS puro: o mesmo bloco está no style.scss e no style.css)
+   ======================================================== */
+
+.product-card .product-image-wrapper .product-img-2 {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.45s ease, transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .product-card:hover .tem-foto-2 .product-img-2 {
+        opacity: 1;
+    }
+}
+
+@media (hover: none) {
+    .product-card .product-image-wrapper .product-img-2 {
+        display: none;
+    }
+}
+
+.product-card .codigo-produto {
+    font-size: 0.72rem;
+    margin-top: 0.25rem;
+}
+
+.product-card:hover .product-title {
+    text-decoration: underline;
+    text-decoration-color: #ffb703;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+}
+
+@media (max-width: 1299.98px) {
+    .site-footer .footer-ajuda {
+        text-align: center;
+    }
+
+    .site-footer > .container-fluid {
+        padding-bottom: 1.25rem !important;
+    }
+
+    .site-footer .footer-grid {
+        gap: 1.25rem;
+    }
+
+    .site-footer .footer-selos {
+        margin-bottom: 0;
+    }
+
+    .selo-seguranca {
+        gap: 0.45rem;
+        padding: 0.35rem 0.75rem 0.35rem 0.55rem;
+        border-left-width: 3px;
+        border-radius: 8px;
+    }
+
+    .selo-seguranca svg {
+        width: 26px;
+        height: 26px;
+    }
+
+    .selo-titulo {
+        font-size: 0.7rem;
+        letter-spacing: 1px;
+    }
+
+    .selo-texto {
+        font-size: 0.68rem;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .whatsapp-float-btn {
+        width: 48px;
+        height: 48px;
+        right: 16px;
+        bottom: 16px;
+    }
+
+    .whatsapp-float-btn svg {
+        width: 26px;
+        height: 26px;
+    }
+}
+
+/* =========================================================
+   17. CABEÇALHO FIXO NO CELULAR + FOTOS DO PRODUTO ACOMPANHANDO A ROLAGEM
+   (escrito em CSS puro: o mesmo bloco está no style.scss e no style.css)
+   ======================================================== */
+
+@media (max-width: 991.98px) {
+    .header-fixed-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+
+    body {
+        padding-top: var(--altura-cabecalho, 93px);
+    }
+}
+
+.menu-mobile-links a.ativo {
+    background-color: #f8f6f2;
+    border-left-color: #ffb703;
+}
+@media (min-width: 768px) {
+    .coluna-fotos-detalhe {
+        position: sticky;
+        top: 140px;
+        align-self: flex-start;
+    }
+}
+
+/* =========================================================
+   18. CELULAR/TABLET: faixa de avisos (Frete grátis, parcelamento, cupom) SEMPRE visível
+   Ao rolar, o cabeçalho continua compacto (logo menor), mas a faixa preta não some mais.
+   (escrito em CSS puro: o mesmo bloco está no style.scss e no style.css)
+   ======================================================== */
+@media (max-width: 991.98px) {
+    body.header-compacto .top-bar {
+        max-height: 60px;
+        padding-top: 0.35rem !important;
+        padding-bottom: 0.35rem !important;
+    }
+}
+
+.header-icon-btn.so-mobile svg {
+    width: 33.4px;
+    height: 33.4px;
+}
+
+/* =========================================================
+   20. VITRINE CENTRALIZADA + NOME DO PRODUTO MAIOR NOS CARTÕES (tablet e computador)
+   (escrito em CSS puro: o mesmo bloco está no style.scss e no style.css)
+   ======================================================== */
+
+@media (min-width: 768px) {
+    .grade-produtos {
+        justify-content: center;
+    }
+}
+
+@media (min-width: 768px) {
+    .vitrine-categoria .product-card .product-title {
+        font-size: 0.8925rem;
+        line-height: 1.25;
+        min-height: 2.5em;
+    }
+}
+
+@media (min-width: 768px) {
+    .titulo-produto-detalhe {
+        font-size: calc(0.9275rem + 0.63vw);
+    }
+}
+
+@media (min-width: 1200px) {
+    .titulo-produto-detalhe {
+        font-size: 1.4rem;
+    }
+}
+
+/* =========================================================
+   21. PROMOÇÕES: preço cheio riscado (traço fino), preço promocional em destaque e selo "-X%"
+   (escrito em CSS puro: o mesmo bloco está no style.scss e no style.css)
+   ======================================================== */
+.preco-cheio-riscado {
+    color: #8a8a8a;
+    font-size: 0.85rem;
+    text-decoration: line-through;
+    text-decoration-thickness: 1px;
+    text-decoration-color: #8a8a8a;
+    line-height: 1.2;
+}
+
+.preco-promocional {
+    color: #111111;
+    font-weight: 700;
+}
+
+.product-card .product-image-wrapper .selo-promocao {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 2;
+    padding: 0.25rem 0.55rem;
+    border-radius: 999px;
+    background-color: #111111;
+    color: #ffffff;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.selo-promocao-detalhe {
+    display: inline-block;
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    background-color: #ececec;
+    color: #111111;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.lista-produtos-promo {
+    max-height: 260px;
+    overflow-y: auto;
+}
+
+.lista-produtos-promo .item-produto-promo {
+    cursor: pointer;
+    border-bottom: 1px solid #f1ece4;
+}
+
+@media (max-width: 575.98px) {
+    .product-card .product-image-wrapper .selo-promocao {
+        top: 6px;
+        left: 6px;
+        font-size: 0.68rem;
+        padding: 0.2rem 0.45rem;
+    }
+
+    .preco-cheio-riscado {
+        font-size: 0.72rem;
+    }
+}
+
+/* =========================================================
+   22. FONTE ELEGANTE NOS TÍTULOS (Cormorant Garamond, carregada no index.php)
+   Serifada clássica de ateliê/alfaiataria, em contraste com a logo em pincel.
+   Vale só para os títulos das páginas; textos, preços e botões continuam na fonte padrão.
+   (escrito em CSS puro: o mesmo bloco está no style.scss e no style.css)
+   ======================================================== */
+main h1,
+main h2,
+main h3,
+.site-footer .footer-titulo {
+    font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    letter-spacing: 0.04em;
+}
+
+main h3.text-success,
+main h1.display-5 {
+    font-family: inherit;
+    letter-spacing: normal;
+}
+
+main h1.fw-light,
+main h2.fw-light,
+main h3.fw-light {
+    font-weight: 500 !important;
+}
+
+main h1,
+main h2 {
+    font-size: calc(1.45rem + 1vw);
+}
+
+main h3 {
+    font-size: calc(1.4rem + 0.6vw);
+}
+
+@media (min-width: 1200px) {
+    main h1,
+    main h2 {
+        font-size: 2.25rem;
+    }
+
+    main h3 {
+        font-size: 1.95rem;
+    }
+}
+
+.nossa-historia .nossa-historia-titulo {
+    font-size: 2.15rem;
+}
+
+.pagina-institucional .pagina-institucional-titulo {
+    font-size: 1.9rem;
+}
+
+.pagina-institucional h2 {
+    font-size: 1.6rem;
+}
+
+.card-video-wrapper .video-overlay-content .video-title {
+    font-size: 2.25rem;
+    font-weight: 500;
+}
+
+.site-footer .footer-titulo {
+    font-size: 1.45rem;
+}
+
+@media (min-width: 768px) {
+    .titulo-produto-detalhe {
+        font-size: calc(1.04rem + 0.7vw);
+    }
+}
+
+@media (min-width: 1200px) {
+    .titulo-produto-detalhe {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .nossa-historia .nossa-historia-titulo {
+        font-size: 1.75rem;
+    }
+
+    .pagina-institucional .pagina-institucional-titulo {
+        font-size: 1.5rem;
+    }
+}
+
+/* =========================================================
+   23. COMPUTADOR E TABLET SEM ☰ (a partir de 992px): só a faixa de avisos e a linha
+   da logo/ícones ficam fixas no topo. O menu (Home, Feminino...) saiu do bloco fixo no
+   index.php e rola com a página. A faixa de avisos não some mais ao rolar.
+   (escrito em CSS puro: o mesmo bloco está no style.scss e no style.css)
+   ======================================================== */
+@media (min-width: 992px) {
+    body.header-compacto .top-bar {
+        max-height: 60px;
+        padding-top: 0.5rem !important;
+        padding-bottom: 0.5rem !important;
+    }
+
+    .header-fixed-wrapper {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+}
+
+/* =========================================================
+   24. SACOLA (tablet e computador): títulos Preço, Qtd, Subtotal e Ação centralizados
+   sobre os itens de cada coluna. No celular a sacola continua em cartões.
+   (escrito em CSS puro: o mesmo bloco está no style.scss e no style.css)
+   ======================================================== */
+@media (min-width: 768px) {
+    .tabela-sacola th:not(:first-child),
+    .tabela-sacola .sc-preco,
+    .tabela-sacola .sc-qtd,
+    .tabela-sacola .sc-subtotal,
+    .tabela-sacola .sc-acao {
+        text-align: center !important;
+        white-space: nowrap;
+    }
+
+    .tabela-sacola .sc-qtd .input-group {
+        margin: 0 auto;
+    }
+}
+
+/* =========================================================
+   25. PAINEL ADMIN RESPONSIVO: rodapé + cabeçalho fixo com menu ☰ no celular/tablet
+   (escrito em CSS puro: o mesmo bloco está no style.scss e no style.css)
+   ======================================================== */
+.admin-footer {
+    line-height: 1.6;
+}
+
+@media (min-width: 992px) {
+    .admin-menu {
+        flex: 0 0 auto;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .admin-container {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
+    .admin-sticky-header {
+        flex-wrap: nowrap;
+        gap: 0.5rem;
+        margin: -1rem -1rem 1rem;
+        padding: 0.6rem 0.75rem !important;
+        border-radius: 0.375rem 0.375rem 0 0;
+        z-index: 1046;
+    }
+
+    .admin-header-titulo {
+        margin: 0;
+        font-size: 1.25rem;
+    }
+
+    .admin-logo-img {
+        height: 42px;
+    }
+
+    .admin-menu-btn {
+        flex: 0 0 auto;
+    }
+
+    .admin-menu .admin-header-botoes {
+        flex: 1 1 auto;
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+        width: 100%;
+    }
+
+    .admin-menu .admin-header-botoes .btn {
+        padding-top: 0.6rem;
+        padding-bottom: 0.6rem;
+        font-size: 0.95rem;
+        text-align: left;
+    }
+
+    .admin-menu .admin-header-botoes form .btn {
+        text-align: center;
+    }
+}
+
+/* =========================================================
+   26. PAINEL ADMIN NO CELULAR: tabelas viram cartões (Pedidos, Dúvidas, Cupons, Promoções,
+   Usuários e Gerenciar). O nome da coluna (data-label, preenchido pelo JS do admin.php)
+   aparece em cima de cada informação.
+   (escrito em CSS puro: o mesmo bloco está no style.scss e no style.css)
+   ======================================================== */
+@media (max-width: 767.98px) {
+    .tabela-cartoes-admin thead {
+        display: none;
+    }
+
+    .tabela-cartoes-admin,
+    .tabela-cartoes-admin tbody,
+    .tabela-cartoes-admin tr,
+    .tabela-cartoes-admin td {
+        display: block;
+        width: 100%;
+    }
+
+    .tabela-cartoes-admin tr {
+        margin-bottom: 0.75rem;
+        border: 1px solid #ebe6df;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        background-color: #ffffff;
+    }
+
+    .tabela-cartoes-admin td {
+        border: 0 !important;
+        border-bottom: 1px solid #f1ece4 !important;
+        padding: 0.55rem 0.75rem !important;
+        text-align: left !important;
+    }
+
+    .tabela-cartoes-admin td:last-child {
+        border-bottom: 0 !important;
+    }
+
+    .tabela-cartoes-admin td[data-label]::before {
+        content: attr(data-label);
+        display: block;
+        margin-bottom: 0.15rem;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: #8a8a8a;
+    }
+
+    .tabela-cartoes-admin td[data-label=""]::before {
+        display: none;
+    }
+
+    .tabela-cartoes-admin form {
+        min-width: 0 !important;
+        max-width: 100% !important;
+    }
+
+    .tabela-cartoes-admin .form-select,
+    .tabela-cartoes-admin textarea {
+        width: 100%;
+    }
+
+    .tabela-cartoes-admin ul {
+        max-height: none !important;
+    }
+
+    .tabela-cartoes-admin td .btn-sm {
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+/* =========================================================
+   27. PAINEL ADMIN NO CELULAR: nos campos curtos o título fica AO LADO do valor
+   (o JS do admin.php marca com .celula-empilhada as células longas — formulários, listas,
+   textos grandes —, que continuam com o título em cima).
+   (escrito em CSS puro: o mesmo bloco está no style.scss e no style.css)
+   ======================================================== */
+@media (max-width: 767.98px) {
+    .tabela-cartoes-admin td[data-label]:not(.celula-empilhada) {
+        position: relative;
+        padding-left: 42% !important;
+        min-height: 2.3rem;
+    }
+
+    .tabela-cartoes-admin td[data-label]:not(.celula-empilhada)::before {
+        position: absolute;
+        left: 0.75rem;
+        top: 0.65rem;
+        width: calc(42% - 1.25rem);
+        margin: 0;
+        line-height: 1.3;
+    }
+}
+
+/* =========================================================
+   28. PAINEL ADMIN NO CELULAR/TABLET: títulos das páginas numa linha só
+   (a fonte diminui conforme a largura da tela; se ainda faltar espaço, termina com "...")
+   (escrito em CSS puro: o mesmo bloco está no style.scss e no style.css)
+   ======================================================== */
+@media (max-width: 991.98px) {
+    .admin-container .card > h4.fw-bold,
+    .admin-container .card > h5.fw-bold,
+    .admin-container .card > div > h4.fw-bold,
+    .admin-container .card > div > h5.fw-bold:not(.admin-header-titulo) {
+        font-size: clamp(0.8rem, 3.7vw, 1.15rem);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    .filtro-categorias-admin .btn {
+        flex: 1 1 calc(50% - 0.5rem);
+    }
+}
+
+/* =========================================================
+   29. PAINEL ADMIN: sem o espaço do cabeçalho fixo da LOJA no topo (no celular o body da loja
+   recebe padding-top para o cabeçalho dela; o painel tem cabeçalho próprio)
+   (escrito em CSS puro: o mesmo bloco está no style.scss e no style.css)
+   ======================================================== */
+body.admin-body {
+    padding-top: 0 !important;
+}
+
+/* =========================================================
+   30. VITRINES: barra com quantidade + botão "Filtros" que abre um painel
+   (lateral no desktop/tablet; gaveta de baixo para cima no smartphone)
+   (escrito em CSS puro: o mesmo bloco está no style.scss e no style.css)
+   ======================================================== */
+.vitrine-barra {
+    border-top: 1px solid #ece7de;
+    border-bottom: 1px solid #ece7de;
+    padding: 0.6rem 0;
+}
+
+.vitrine-total {
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #6c6c6c;
+}
+
+.vitrine-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    border: 1px solid #d9d3c7;
+    border-radius: 999px;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.78rem;
+    color: #111111;
+    text-decoration: none;
+    background-color: #faf8f4;
+    transition: border-color 0.2s ease;
+}
+
+.vitrine-chip:hover {
+    border-color: #111111;
+    color: #111111;
+}
+
+.btn-filtros {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid #111111;
+    border-radius: 999px;
+    padding: 0.4rem 1.1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #111111;
+    background-color: #ffffff;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-filtros:hover,
+.btn-filtros:focus-visible {
+    background-color: #111111;
+    color: #ffffff;
+}
+
+.filtros-contador {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    background-color: #111111;
+    color: #ffffff;
+}
+
+.btn-filtros:hover .filtros-contador,
+.btn-filtros:focus-visible .filtros-contador {
+    background-color: #ffffff;
+    color: #111111;
+}
+
+.painel-filtros {
+    --bs-offcanvas-width: 360px;
+}
+
+.painel-filtros .offcanvas-header {
+    border-bottom: 1px solid #ece7de;
+}
+
+.painel-filtros .offcanvas-title {
+    font-size: 0.95rem;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+}
+
+.painel-filtros fieldset {
+    border: 0;
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.painel-filtros-titulo {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #6c6c6c;
+    margin-bottom: 0.5rem;
+}
+
+.opcao-filtro {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.7rem 0.25rem;
+    border-bottom: 1px solid #f1ede6;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.opcao-filtro input {
+    accent-color: #111111;
+    width: 1.05rem;
+    height: 1.05rem;
+    flex-shrink: 0;
+}
+
+.opcao-filtro small {
+    margin-left: auto;
+    color: #8a8a8a;
+}
+
+.opcao-filtro:has(input:checked) span {
+    font-weight: 600;
+}
+
+.opcao-filtro.indisponivel {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.painel-filtros-rodape {
+    padding: 1rem;
+    border-top: 1px solid #ece7de;
+    background-color: #ffffff;
+}
+
+.painel-filtros-rodape .btn {
+    border-radius: 999px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    padding: 0.6rem 1rem;
+}
+
+body:has(.painel-filtros.show) .whatsapp-float-btn,
+body:has(.painel-filtros.showing) .whatsapp-float-btn {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+@media (max-width: 575.98px) {
+    .vitrine-barra {
+        position: sticky;
+        top: var(--altura-cabecalho, 93px);
+        z-index: 5;
+        background-color: #ffffff;
+    }
+
+    .painel-filtros.offcanvas-end {
+        top: auto;
+        right: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        max-height: 85vh;
+        border-left: 0;
+        border-radius: 1rem 1rem 0 0;
+        transform: translateY(100%);
+    }
+
+    .painel-filtros.offcanvas-end.showing,
+    .painel-filtros.offcanvas-end.show:not(.hiding) {
+        transform: none;
+    }
+}
